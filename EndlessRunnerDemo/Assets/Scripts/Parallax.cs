@@ -5,27 +5,32 @@ using UnityEngine;
 public class Parallax : MonoBehaviour
 {
 
-    private float length, startPosition;
+    private float length;
+    private Vector2 startPosition;
     public GameObject camera;
     public bool autoScroll;
     public float parallaxEffect;
+    public float targetXPosition;
     // Start is called before the first frame update
     void Start()
     {
         //Set StartPosition to the current TransformPosition.x of the BG
-        startPosition = transform.position.x;
+        startPosition = new Vector2(transform.position.x, transform.position.y);
         length = GetComponent<SpriteRenderer>().bounds.size.x;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        //Store the X value of the current position of a layer in a temp variable
+        float temp = (camera.transform.position.x);
+
         //Set the distance to be the current transform position 
         //Multiply it by the parallaxEffect (different for each layer)
-        float temp = (camera.transform.position.x * (1 - parallaxEffect));
         float dist = (camera.transform.position.x * parallaxEffect);
         
-        float desiredXPosition = startPosition + dist;
+        float desiredXPosition = startPosition.x + dist;
 
         if(autoScroll)
         {
@@ -36,15 +41,14 @@ public class Parallax : MonoBehaviour
         transform.position = new Vector2(desiredXPosition, transform.position.y);
        //transform.position = new Vector2(startPosition + dist, transform.position.y);
 
-        //If the layer goes out of bounds, 
-        if(temp > startPosition + length)
+        //If the value goes past the target X position (different for each layer)
+        //Reset the layer's transform position to it's starting one 
+        if(temp < targetXPosition)
         {
-            startPosition += length;
-            Debug.Log("OUT OF BOUNDS");
+            Debug.Log("oh my oh my");
+            transform.position = new Vector2(startPosition.x,startPosition.y);
         }
-        else if(temp < startPosition - length) 
-        {
-            startPosition -= length;
-        }
+        Debug.Log(temp);
+       // Debug.Log(startPosition + length);
 }
 }
