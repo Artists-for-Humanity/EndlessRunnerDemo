@@ -7,25 +7,27 @@ public class GameManager : MonoBehaviour
 {
 
     //VARIABLES//
-    public int playerHealth = 3;
-    public int maxHealth = 3;
-
+    [Range (3,5)]
+    public int playerHealth;
+    public int score = 0;
     public bool invincible = false;
     //REFERENCES//
     private PlayerMovement player;
 
     public TextMeshProUGUI gameOverText;
+    public TextMeshProUGUI scoreText;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
         gameOverText.text = "";
+        scoreText.text = "0";
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        scoreText.text = score.ToString();
     }
 
     public void TakeDamage()

@@ -20,7 +20,7 @@ public class AlienScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D player)
     {
-        if(player.gameObject.tag == "Player")
+        if(player.gameObject.tag == "Player" && gm.invincible == false)
         {
             gm.TakeDamage();
         }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     //VARIABLES//
+    private GameManager gm;
     private Rigidbody2D rb2d;
     public Animator anim;
     private BoxCollider2D playerCollider;
@@ -30,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
