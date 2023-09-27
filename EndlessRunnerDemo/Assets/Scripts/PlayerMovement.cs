@@ -74,6 +74,10 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.LeftShift))
         {
             anim.SetBool("isSliding", false);
+            slideCollider.enabled = false;
+            playerCollider.enabled = true;
+            isSliding = false;
+            canJump = true;
         }
 
                 //If player is falling (velocity is negative) and is still holding space
@@ -88,19 +92,7 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("isJumping", false);
             playerCollider.enabled = false;
             slideCollider.enabled = true;
-            //StopAllCoroutines();
-            StartCoroutine("StopSlide");
                         //playerCollider.size = new Vector2(1.0f, 0.5f);
             //playerCollider.offset = new Vector2(0f, -0.25f);
-    }
-
-    IEnumerator StopSlide()
-    {
-        yield return new WaitForSeconds(slideDuration);
-        anim.SetBool("isSliding", false);
-        slideCollider.enabled = false;
-        playerCollider.enabled = true;
-        isSliding = false;
-        canJump = true;
     }
 }
