@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using TMPro;
 public class GameManager : MonoBehaviour
 {
 
@@ -12,10 +13,13 @@ public class GameManager : MonoBehaviour
     public bool invincible = false;
     //REFERENCES//
     private PlayerMovement player;
+
+    public TextMeshProUGUI gameOverText;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
+        gameOverText.text = "";
     }
 
     // Update is called once per frame
@@ -27,17 +31,17 @@ public class GameManager : MonoBehaviour
     public void TakeDamage()
     {
         Debug.Log("TAKING DAMAGE");
-        if(invincible == false)
+        if(invincible == false && playerHealth > 0)
         {
             playerHealth--;
             player.anim.SetTrigger("takingDamage");
-            invincible = true;
             Invoke("EndCoolDown", 0.5f);
             if(playerHealth <= 0)
             {
                 Debug.Log("Game Over");
                 GameOver();
             }
+            invincible = true;
         }
 
 
@@ -45,7 +49,9 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-
+        Debug.Log("Game Over...");
+        player.anim.SetTrigger("GameOver");
+        gameOverText.text = "Game Over";
     }
 
     public void EndCoolDown()
