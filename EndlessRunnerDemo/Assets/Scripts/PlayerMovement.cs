@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     //VARIABLES//
     private Rigidbody2D rb2d;
-    private Animator anim;
+    public Animator anim;
     private BoxCollider2D playerCollider;
     public BoxCollider2D slideCollider;
 
@@ -23,9 +23,6 @@ public class PlayerMovement : MonoBehaviour
 
     public bool canJump = true;
     public bool isSliding = true;
-
-
-
     public float slideGravity = 10f;
 
     void Start()

@@ -45,10 +45,7 @@ public class Parallax : MonoBehaviour
         //Reset the layer's transform position to it's starting one 
         if(temp < targetXPosition)
         {
-            Debug.Log("oh my oh my");
             transform.position = new Vector2(startPosition.x,startPosition.y);
         }
-        Debug.Log(temp);
-       // Debug.Log(startPosition + length);
 }
 }
