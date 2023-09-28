@@ -20,13 +20,12 @@ public class PlayerMovement : MonoBehaviour
     [Range(2,6)]
     public float holdButtonGravity;
 
-    [Range(1,5)]
-    public float slideDuration;
-
     public bool canJump = true;
     public bool isSliding = true;
     public bool canAttack = true;
-    public float slideGravity = 10f;
+
+    [Range(10,100)]
+    public float slideGravity;
 
     void Start()
     {
@@ -39,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
         canJump = true;
         isSliding = true;
         canAttack = true;
-        slideGravity = 10f;
     }
 
     // Update is called once per frame

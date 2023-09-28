@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
 
     //VARIABLES//
-    [Range (3,5)]
+    [Range (3,10)]
     public int playerHealth;
     public int score = 0;
     public bool invincible = false;
