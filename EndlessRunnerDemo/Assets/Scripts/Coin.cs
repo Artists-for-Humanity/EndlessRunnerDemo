@@ -8,7 +8,7 @@ public class Coin : MonoBehaviour
     
     public int pointValue = 10;
 
-    private float speed = 5f;
+    private float speed = 3f;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,12 +25,10 @@ public class Coin : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
+                        this.gameObject.SetActive(false);
             gm.score += pointValue;
-            this.gameObject.SetActive(false);
+
+            Destroy(this.gameObject);
         }
-    }
-    void OnTriggerExit2D(Collider2D other)
-    {
-        Destroy(this.gameObject);
     }
 }

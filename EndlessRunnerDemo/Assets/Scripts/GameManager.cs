@@ -87,4 +87,12 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+    //Call this method when clicking the quit button.
+    //Exits out of the game and returns to the title screen.
+    public void QuitGame()
+    {
+        Debug.Log("This method only works on builds, not in the Editor.");
+        Application.Quit();
+    }
 }

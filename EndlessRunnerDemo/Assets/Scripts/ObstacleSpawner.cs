@@ -36,8 +36,8 @@ private GameManager gm;
                 obstaclePosX = obstacles[i].transform.position.x + 20;
                 obstaclePosY = obstacles[i].transform.position.y;
                 spawnPosition = new Vector2(obstacles[i].transform.position.x + 20, obstacles[i].transform.position.y);
-                Instantiate(obstacles[i], spawnPosition, Quaternion.identity);
-                yield return new WaitForSeconds(1f);
+                Instantiate(obstacles[Random.Range(0, obstacles.Count)], spawnPosition, Quaternion.identity);
+                yield return new WaitForSeconds(2f);
             }
             yield return new WaitForSeconds(3f);
         }

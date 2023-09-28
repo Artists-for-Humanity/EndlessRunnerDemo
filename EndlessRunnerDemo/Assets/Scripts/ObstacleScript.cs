@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AlienScript : MonoBehaviour
+public class ObstacleScript : MonoBehaviour
 {
     private GameManager gm;
     public float speed;

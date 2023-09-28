@@ -32,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
         playerCollider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        slideCollider.enabled = false;
+        playerCollider.enabled = true;
     }
 
     // Update is called once per frame
