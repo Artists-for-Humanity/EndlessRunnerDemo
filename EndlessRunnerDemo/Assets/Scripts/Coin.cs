@@ -8,7 +8,7 @@ public class Coin : MonoBehaviour
     
     public int pointValue = 10;
 
-    private float speed = 3f;
+    private float speed = 5f;
     // Start is called before the first frame update
     void Start()
     {

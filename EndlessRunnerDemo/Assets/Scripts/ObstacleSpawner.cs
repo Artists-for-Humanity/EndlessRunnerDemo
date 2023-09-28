@@ -27,17 +27,17 @@ private GameManager gm;
 
     IEnumerator SpawnObstacles()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.1f);
         while(gm.gameOver == false)
         {
             for(int i = 0; i < obstacles.Count; i++)
             {
                 Debug.Log("Spawn an obstacle");
-                obstaclePosX = obstacles[i].transform.position.x + 30;
+                obstaclePosX = obstacles[i].transform.position.x + 20;
                 obstaclePosY = obstacles[i].transform.position.y;
                 spawnPosition = new Vector2(obstaclePosX, obstaclePosY);
                 Instantiate(obstacles[Random.Range(0, obstacles.Count)], spawnPosition, Quaternion.identity);
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(3f);
             }
             yield return new WaitForSeconds(3f);
         }
