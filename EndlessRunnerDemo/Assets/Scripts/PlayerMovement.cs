@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb2d;
     public Animator anim;
     private BoxCollider2D playerCollider;
-    public BoxCollider2D slideCollider;
+    public GameObject slideCollider;
 
     [Range(5,10)]
     public float jumpSpeed;
@@ -32,14 +32,16 @@ public class PlayerMovement : MonoBehaviour
         playerCollider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        slideCollider.enabled = false;
+        slideCollider.SetActive(false);
         playerCollider.enabled = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //JUMPING//
+        if(gm.gameOver == false)
+        {
+ //JUMPING//
         if(Input.GetKeyDown(KeyCode.Space) && canJump && !Input.GetKey(KeyCode.LeftShift))
         {
             rb2d.velocity = Vector2.up * jumpSpeed;
@@ -61,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
                     rb2d.velocity += Vector2.up * Physics.gravity.y * (tapButtonGravity - 1) * Time.deltaTime;
             }
 
+            //If player is falling (velocity is negative) and is still holding space
             if(rb2d.velocity.y == 0)
             {
                 canJump = true;
@@ -75,25 +78,23 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.LeftShift))
         {
             anim.SetBool("isSliding", false);
-            slideCollider.enabled = false;
+            slideCollider.SetActive(false);
             playerCollider.enabled = true;
             isSliding = false;
             canJump = true;
         }
-
-                //If player is falling (velocity is negative) and is still holding space
+        }
+       
     }
 
     void Slide()
     {
+            slideCollider.SetActive(true);
+            playerCollider.enabled = false;
             rb2d.velocity += Vector2.up * Physics.gravity.y * (slideGravity - 1) * Time.deltaTime;
             isSliding = true;
             canJump = false;
             anim.SetBool("isSliding", true);
             anim.SetBool("isJumping", false);
-            playerCollider.enabled = false;
-            slideCollider.enabled = true;
-                        //playerCollider.size = new Vector2(1.0f, 0.5f);
-            //playerCollider.offset = new Vector2(0f, -0.25f);
     }
 }

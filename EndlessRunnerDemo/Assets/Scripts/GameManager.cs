@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
     //Reload the scene and try the game again.
     public void RestartGame()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     //Call this method when clicking the quit button.

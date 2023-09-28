@@ -33,9 +33,9 @@ private GameManager gm;
             for(int i = 0; i < obstacles.Count; i++)
             {
                 Debug.Log("Spawn an obstacle");
-                obstaclePosX = obstacles[i].transform.position.x + 20;
+                obstaclePosX = obstacles[i].transform.position.x + 30;
                 obstaclePosY = obstacles[i].transform.position.y;
-                spawnPosition = new Vector2(obstacles[i].transform.position.x + 20, obstacles[i].transform.position.y);
+                spawnPosition = new Vector2(obstaclePosX, obstaclePosY);
                 Instantiate(obstacles[Random.Range(0, obstacles.Count)], spawnPosition, Quaternion.identity);
                 yield return new WaitForSeconds(2f);
             }
